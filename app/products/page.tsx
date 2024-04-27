@@ -93,7 +93,6 @@ export default function Page() {
     };
     
 
-
     const uniqueCategoriasArray = Array.from(
         new Set(product?.map((item) => item.category))
     );
@@ -136,29 +135,37 @@ export default function Page() {
                     </Link>
                 </div>
                 <ol>
-                    <ul className='flex justify-center grid grid-cols-4 gap-4'>
+                    <ul className='flex flex-wrap justify-center gap-4'>
                         {filteredItems.map((item: any) => (
-                            <li key={item.id} className='flex w-80 h-auto justify-center items-center m-4 bg-black border rounded-lg shadow-md hover:shadow-lg'>
-                                <div className='p-4'>
-                                    <h2 className='text-xl text-white text-center font-bold mb-2'>{item.name}</h2>
-                                    <p className='text-gray-500 text-center mt-12'>{item.description}</p>
-                                    <p className='text-gray-400 text-center mt-12 italic'>{item.category}</p>
-                                    <img src={item.image} alt="" className='mx-auto'/>
-                                    <p className='bg-gray-50 text-black p-3 w-full flex justify-center mt-2 rounded-md'>  
-                                        {item.price}
-                                    </p>
+                            <li key={item.id} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex justify-center items-center m-4 bg-black border rounded-lg shadow-md hover:shadow-lg'>
+                                <div className='p-4 w-full'>
+                                    <h2 className='text-yellow-500 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-bold mb-2'>{item.name}</h2>
+                                    <p className='text-gray-300 sm:text-base md:text-lg lg:text-xl xl:text-2xl text-center mt-2'>{item.description}</p>
+                                    <p className='text-blue-400 text-center mt-2 italic'>{item.category}</p>
+                                    <img src={item.image} alt={`Imagen de ${item.name}`} width="200" height="200" className='mx-auto object-cover mt-4' loading="lazy"/>
+                                    <p className='bg-gray-200 text-gray-800 p-3 w-full flex justify-center mt-2 rounded-md text-base'>{item.price}</p>
                                     <Link legacyBehavior href={`/products/edit/${item.id}`}>
-                                <a className="bg-red-600 text-white px-4 py-3 mt-6 rounded-md hover:bg-emerald-800 transition flex justify-center">Editar</a>
-                                </Link>
+                                        <a className="bg-red-600 text-white px-4 py-3 mt-4 rounded-md hover:bg-emerald-800 transition flex justify-center w-full text-base">Editar</a>
+                                    </Link>
                                 </div>
+
                             </li>
                         ))}
                     </ul>
+
+                    <link rel="preload" href={filteredItems[0]?.image} as="image" />
+
                 </ol>
 
-                <div className=" q  w-full flex justify-center text-base text-center font-bold">
-                        <SliderPage widthCarrousel={300} HeigthCarrousel={300} items={product}/>
-                </div>
+                {/* <div className="w-full md:w-4/4 lg:w-3/3 xl:w-2/2 mx-auto">
+                    <div className="w-full h-[200px]">
+                        {product && product.length > 0 ? (
+                            <SliderPage widthCarrousel={300} HeigthCarrousel={200} items={product.map(item => ({ ...item, image: `${item.image}?tr=w-300,h-300` }))} />
+                        ) : (
+                            <p>No hay productos para mostrar.</p>
+                        )}
+                    </div>
+                </div> */}
             </main>
     );
 }
