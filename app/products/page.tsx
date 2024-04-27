@@ -157,7 +157,7 @@ export default function Page() {
 
                 </ol>
 
-                {/* <div className="w-full md:w-4/4 lg:w-3/3 xl:w-2/2 mx-auto">
+                <div className="w-full md:w-4/4 lg:w-3/3 xl:w-2/2 mx-auto">
                     <div className="w-full h-[200px]">
                         {product && product.length > 0 ? (
                             <SliderPage widthCarrousel={300} HeigthCarrousel={200} items={product.map(item => ({ ...item, image: `${item.image}?tr=w-300,h-300` }))} />
@@ -165,7 +165,7 @@ export default function Page() {
                             <p>No hay productos para mostrar.</p>
                         )}
                     </div>
-                </div> */}
+                </div>
             </main>
     );
 }
